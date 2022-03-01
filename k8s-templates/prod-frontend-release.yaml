@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-release-web
+  namespace: prod-cmdb
+  labels:
+    app: prod-release-web
+spec:
+  selector:
+    matchLabels:
+      name: prod-release-web
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: prod-release-web
+        app-version: "<VERSION>"
+    spec:
+      # securityContext:
+      #   runAsUser: 472
+      #   fsGroup: 472
+      containers:
+        - name: prod-release-web
+          image: devops-registry-vpc.cn-shanghai.cr.aliyuncs.com/ipfsforce/devops/release-frontend:<VERSION>
+          ports:
+            - containerPort: 80
+              name: release-web
+          volumeMounts:
+            - name: config-json
+              mountPath: /opt/dist/config.json
+              subPath: config.json
+            - name: nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: config-json
+          configMap:
+            name: app-release-frontend-config-json
+        - name: nginx-conf
+          configMap:
+            name: app-release-frontend-nginx-conf
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: prod-release-web
+  namespace: prod-cmdb
+spec:
+  selector:
+    name: prod-release-web
+  ports:
+    - port: 80
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prod-release-web
+  namespace: prod-cmdb
+  annotations:
+spec:
+  rules:
+    - host: release.ops.ipfsyuanli.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: prod-release-web
+              servicePort: 80
