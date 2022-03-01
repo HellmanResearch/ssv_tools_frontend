@@ -1,5 +1,5 @@
 {
-  "name": "Release",
+  "name": "Rewards",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "df-admin": "^1.4.2",
     "echarts": "4.2",
-    "element-ui": "^2.14.1",
+    "element-ui": "^2.15.6",
     "font-awesome": "4.7.0",
     "gojs": "^2.1.21",
     "lodash": "^4.17.19",

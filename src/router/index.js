@@ -14,6 +14,37 @@ Vue.use(VueRouter)
 
 const routes = [
     {
+        path: "/",
+        name: "root",
+        meta: {
+            "name": "首页"
+        },
+        component: () => import('../views/frame/Frame.vue'),
+        redirect: "reward",
+        children: [
+            {
+                path: "reward",
+                name: "reward",
+                component: () => import('../views/reward/Reward.vue'),
+                meta: {
+                    name: "Reward",
+                    icon: "fa-th",
+                    login: false,
+                }
+            },
+        ]
+    },
+    // {
+    //     path: "/",
+    //     name: "result",
+    //     component: () => import('../views/reward/Result.vue'),
+    //     meta: {
+    //         name: "Result",
+    //         icon: "fa-th",
+    //         login: false,
+    //     }
+    // },
+    {
         path: "/login",
         name: "login",
         component: () => import("../views/login/Login.vue")
@@ -23,7 +54,7 @@ const routes = [
         name: "test",
         component: () => import("../views/test/Test.vue"),
         meta: {
-          login: false
+            login: false
         }
     }
 ]
@@ -137,7 +168,7 @@ export const init_router = () => {
 //     init_router()
 // }
 
-init_router()
+// init_router()
 
 
 export default router

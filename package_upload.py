@@ -31,7 +31,7 @@ if __name__ == '__main__':
   msg = dt.strftime("%Y%m%d%H%M")
   current_branch = get_current_branch()
 
-  run_cmd("yarn run build")
+#   run_cmd("yarn run build")
 #   run_cmd("cp -r django-static dist/static")
   run_cmd("git add *")
   run_cmd("git commit -a -m {}".format(msg))

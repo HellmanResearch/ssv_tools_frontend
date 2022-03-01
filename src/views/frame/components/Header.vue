@@ -1,14 +1,13 @@
 <template>
     <div
-            class="df-theme-color"
-            style="padding: 0px 20px; display: flex; align-items: center; justify-content: space-between; height: 80px"
+            style="padding: 0px 100px; display: flex; align-items: center; justify-content: space-between; height: 80px; background-color: #16B8D8"
     >
         <div>
             <img
                     style="height: 44px; display: inline-block; vertical-align: middle; box-sizing: border-box; vertical-align: middle;"
-                    src="../../../assets/ipfs_logo_09.png"
+                    src="../../../assets/logo.png"
             />
-            <span style="margin-left: 8px; letter-spacing:2px; font-weight: 420; color: #FFFFFF; font-size: 30px; height: 100%; display: inline-block; box-sizing: border-box; vertical-align: middle;">&nbsp;| {{ site_name }}</span>
+            <span style="margin-left: 8px; letter-spacing:2px; font-weight: 420; color: #FFFFFF; font-size: 30px; height: 100%; display: inline-block; box-sizing: border-box; vertical-align: middle;">&nbsp;| Rewards </span>
 
         </div>
         <div>
@@ -26,99 +25,33 @@
                 </li>
                 <li
                         class="c_li"
-                        v-if="api_url"
-                        @click="window.open(api_url)"
+                        @click="window.open('https://twitter.com/HellmanResearch')"
                 >
                     <i
-                            class="fa fa-file-text"
+                            class="fa fa-twitter"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>API文档
+                    ></i>Twitter
                 </li>
                 <li
                         class="c_li"
-                        v-if="help_url"
-                        @click="window.open(help_url)"
+                        @click="window.open('https://hellman.team')"
                 >
                     <i
-                            class="fa fa-question-circle"
+                            class="fa fa-globe"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>帮助
+                    ></i>website
                 </li>
                 <li
                         class="c_li"
-                        v-if="spit_slot_content"
-                        @click="visible_dialog_spit_slot = true"
+                        @click="window.open('https://explorer.ssv.network/operators/e4edcb950ee9f4a4f89dde5e9b74b615c04f21f204884bc53ffe2bebbcea4b93')"
                 >
                     <i
-                            class="fa fa-comment"
+                            class="fa fa-external-link"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>我要吐槽
-                </li>
-                <li
-                        class="c_li"
-                        @click="$df_add_dialog('dfUpdateLog', {update_logs})"
-                >
-                    <i
-                            class="fa fa-arrow-circle-o-up"
-                            aria-hidden="true"
-                            style="margin-right: 5px"
-                    ></i>更新日志
-                </li>
-
-                <li
-                        class="c_li"
-                        @click="visible_dialog_about = true"
-                >
-                    <i
-                            class="fa fa-info-circle"
-                            aria-hidden="true"
-                            style="margin-right: 5px"
-                    ></i>关于
-                </li>
-                <li class="c_li">
-                    <el-dropdown style="">
-            <span
-                    class="el-dropdown-link"
-                    style="font-size: 16px; color: #FFF"
-            >
-              <i
-                      class="fa fa-user-circle-o"
-                      style="margin-right: 5px"
-              ></i>{{ user_info.name ? user_info.name: "未登录" }}
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item
-                                    :disabled="user_info.username==undefined?true:false"
-                                    @click.native="visible_dialog_token=true"
-                            >
-                                <i
-                                        class="fa fa-key"
-                                        aria-hidden="true"
-                                ></i>Token
-                            </el-dropdown-item>
-                            <el-dropdown-item
-                                    v-if="user_info.username"
-                                    @click.native="on_logout"
-                            >
-                                <i
-                                        class="fa fa-sign-out"
-                                        aria-hidden="true"
-                                ></i>退出
-                            </el-dropdown-item>
-                            <el-dropdown-item
-                                    v-else
-                            >
-                                <i
-                                        class="fa fa-sign-in"
-                                        aria-hidden="true"
-                                ></i>登录
-                            </el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
+                    ></i>ssv node
                 </li>
             </ul>
         </div>

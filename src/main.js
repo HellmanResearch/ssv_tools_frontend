@@ -3,14 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-import VuePipeline from 'vue-pipeline'
-import 'echarts/lib/component/title'
-import 'echarts/lib/component/toolbox'
-import VCharts from "v-charts"
-import axios from "axios"
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { faUserSecret, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import './theme/index.css'
 
 import "font-awesome/css/font-awesome.min.css"
 
@@ -19,13 +12,11 @@ import df_admin from "df-admin"
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
-import 'element-ui/lib/theme-chalk/index.css';
 import 'nprogress/nprogress.css'
-import 'v-charts/lib/style.css'
 
 import master_api from "./api"
 import * as plugins from "./utils/plugins"
-import devops_admin from "./index"
+// import devops_admin from "./index"
 
 // library.add(faUserSecret, faSignOutAlt)
 
@@ -33,10 +24,10 @@ Vue.config.productionTip = false
 // Vue.prototype.$g_master_api = master_api
 // Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(ElementUI);
-Vue.use(VCharts)
-Vue.use(devops_admin, master_api)
+// Vue.use(VCharts)
+// Vue.use(devops_admin, master_api)
 Vue.use(df_admin, master_api)
-Vue.use(VuePipeline)
+// Vue.use(VuePipeline)
 
 
 const require_component = require.context(
