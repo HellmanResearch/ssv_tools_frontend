@@ -63,7 +63,7 @@
                 </el-table>
             </div>
             <div style="text-align: center; margin-top: 60px">
-                Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">SSV</a>
+                Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">ssv.network</a>
             </div>
         </div>
     </div>
