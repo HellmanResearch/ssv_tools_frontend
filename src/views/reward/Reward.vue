@@ -62,6 +62,9 @@
                     </el-table-column>
                 </el-table>
             </div>
+            <div style="text-align: center; margin-top: 60px">
+                Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">SSV</a>
+            </div>
         </div>
     </div>
 </template>
@@ -121,7 +124,7 @@
             arraySpanMethod({row, column, rowIndex, columnIndex}) {
                 if (rowIndex === 5) {
                     if (columnIndex == 0) {
-                        return [1, 5]
+                        return [1, 6]
                     }
                 } else if (rowIndex === 11) {
                     if (columnIndex == 1) {
