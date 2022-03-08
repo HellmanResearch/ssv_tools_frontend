@@ -27,11 +27,31 @@ const routes = [
                 name: "reward",
                 component: () => import('../views/reward/Reward.vue'),
                 meta: {
-                    name: "Reward",
+                    name: "top",
                     icon: "fa-th",
                     login: false,
                 }
             },
+            {
+                path: "top",
+                name: "top",
+                component: () => import('../views/top/Top.vue'),
+                meta: {
+                    name: "top",
+                    icon: "fa-th",
+                    login: false,
+                }
+            },
+            {
+                path: "allocation",
+                name: "allocation",
+                component: () => import('../views/allocation/Allocation.vue'),
+                meta: {
+                    name: "allocation",
+                    icon: "fa-th",
+                    login: false,
+                }
+            }
         ]
     },
     // {

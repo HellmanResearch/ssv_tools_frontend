@@ -4,7 +4,7 @@
             <div>
                 <el-input id="search_input" ref="search_input" :trigger-on-focus="false" :autofocus="true"
                           select-when-unmatched @keyup.enter.native="on_search()"
-                          placeholder="Input the wallet address(owner address) used to register your operator / validator"
+                          placeholder="Input the wallet address used to register your operator / validator"
                           v-model="params.owner_address"
                           style="width: 100%; text-align: center">
                     <el-button id="submit" @click="on_search()" slot="append" icon="el-icon-search"
@@ -62,7 +62,7 @@
                     </el-table-column>
                 </el-table>
             </div>
-            <div style="text-align: center; margin-top: 60px; color: #606266; font-size: 12px">
+            <div style="text-align: center; margin-top: 60px">
                 Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">ssv.network</a>
             </div>
         </div>

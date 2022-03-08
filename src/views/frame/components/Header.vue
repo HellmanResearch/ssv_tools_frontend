@@ -1,6 +1,6 @@
 <template>
     <div
-            style="padding: 0px 100px; display: flex; align-items: center; justify-content: space-between; height: 80px; background-color: #16B8D8"
+            style="padding: 0px 100px; display: flex; align-items: center; justify-content: space-between; height: 60px; background-color: #16B8D8"
     >
         <div>
             <img
@@ -8,8 +8,8 @@
                     src="../../../assets/logo.png"
             />
             <span style="margin-left: 8px; letter-spacing:2px; font-weight: 420; color: #FFFFFF; font-size: 30px; height: 100%; display: inline-block; box-sizing: border-box; vertical-align: middle;">&nbsp;| Rewards </span>
-
         </div>
+        <l-frame-menu></l-frame-menu>
         <div>
             <ul class="c_ul">
                 <li

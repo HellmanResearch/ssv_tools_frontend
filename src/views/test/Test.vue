@@ -1,50 +1,18 @@
 <template>
-    <el-table
-            :data="tableData"
-            border
-            style="width: 100%; border-color: #16B8D8; border-top-color: #16B8D8; border-right-color: #16B8D8">
-        <el-table-column
-                fixed
-                prop="date"
-                label="日期"
-                style="border-color: #16B8D8; border-top-color: #16B8D8; border-right-color: #16B8D8"
-                width="150">
-        </el-table-column>
-        <el-table-column
-                prop="name"
-                label="姓名"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="province"
-                label="省份"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="city"
-                label="市区"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                prop="address"
-                label="地址"
-                width="300">
-        </el-table-column>
-        <el-table-column
-                prop="zip"
-                label="邮编"
-                width="120">
-        </el-table-column>
-        <el-table-column
-                fixed="right"
-                label="操作"
-                width="100">
-            <template slot-scope="scope">
-                <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">编辑</el-button>
-            </template>
-        </el-table-column>
-    </el-table>
+    <div>
+        <el-descriptions border>
+            <el-descriptions-item label="用户名">
+                <el-descriptions-item>kooriookami</el-descriptions-item>
+                <el-descriptions-item>kooriookami</el-descriptions-item>
+            </el-descriptions-item>
+            <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
+            <el-descriptions-item label="居住地" :span="2">苏州市</el-descriptions-item>
+            <el-descriptions-item label="备注">
+                <el-tag size="small">学校</el-tag>
+            </el-descriptions-item>
+            <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
+        </el-descriptions>
+    </div>
 </template>
 
 <script>
@@ -56,41 +24,17 @@
         },
 
         data() {
-            return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1517 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1519 弄',
-                    zip: 200333
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1516 弄',
-                    zip: 200333
-                }]
-            }
-        }
+
+        },
     }
 </script>
 
 <style>
+    .el-input__inner {
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        border-bottom: 1px solid #16b8d8;
+    }
 
 </style>
