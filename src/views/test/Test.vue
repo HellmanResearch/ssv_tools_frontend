@@ -30,11 +30,5 @@
 </script>
 
 <style>
-    .el-input__inner {
-        border-top: 0px;
-        border-right: 0px;
-        border-left: 0px;
-        border-bottom: 1px solid #16b8d8;
-    }
 
 </style>
