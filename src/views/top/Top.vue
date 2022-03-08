@@ -12,8 +12,8 @@
 <!--            <el-input style="width: 400px" v-model="search_value" placeholder="Search Owner Address" @change="on_search"></el-input>-->
         </div>
         <div style="margin-top: 20px; display: flex; justify-content: space-between">
-            <l-top-rewards ref="top_rewards"></l-top-rewards>
-            <l-top-performance ref="top_performance" style="margin-left: 20px"></l-top-performance>
+            <l-top-rewards style="width: 45%" ref="top_rewards"></l-top-rewards>
+            <l-top-performance ref="top_performance" style="width: 45%"></l-top-performance>
         </div>
         <div style="text-align: center; margin-top: 60px; color: #606266; font-size: 12px">
         Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">ssv.network</a>
