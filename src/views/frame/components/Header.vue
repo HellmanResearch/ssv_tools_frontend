@@ -41,7 +41,7 @@
                             class="fa fa-globe"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>Sebsite
+                    ></i>Website
                 </li>
                 <li
                         class="c_li"
