@@ -41,7 +41,7 @@
                             class="fa fa-globe"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>website
+                    ></i>Sebsite
                 </li>
                 <li
                         class="c_li"
@@ -51,7 +51,7 @@
                             class="fa fa-external-link"
                             aria-hidden="true"
                             style="margin-right: 5px"
-                    ></i>ssv node
+                    ></i>SSV node
                 </li>
             </ul>
         </div>

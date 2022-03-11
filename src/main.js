@@ -13,6 +13,8 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
 import 'nprogress/nprogress.css'
+import locale from 'element-ui/lib/locale/lang/en'
+
 
 import master_api from "./api"
 import * as plugins from "./utils/plugins"
@@ -23,7 +25,7 @@ import * as plugins from "./utils/plugins"
 Vue.config.productionTip = false
 // Vue.prototype.$g_master_api = master_api
 // Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.use(ElementUI);
+Vue.use(ElementUI, {locale});
 // Vue.use(VCharts)
 // Vue.use(devops_admin, master_api)
 Vue.use(df_admin, master_api)
