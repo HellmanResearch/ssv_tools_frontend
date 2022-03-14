@@ -2,7 +2,7 @@
     <div style="display: flex; justify-content: center">
         <div style="width: 70%">
             <el-alert
-                    title="This is not secure and is only for testnet"
+                    title="The key generated here is only for easier participation in the SSV testnet, please do not abuse the network. We do not ask for any keys and your wallet is safe."
                     :closable="false"
                     center
                     show-icon
@@ -62,6 +62,7 @@
                 // window.open(url);
                 this.downloading = false
                 const label = this.itemData.dir_name + ".zip";
+                console.log("label: ", label)
                 this.downloadItem(url, label)
             },
             async onCopyHex() {
@@ -118,7 +119,7 @@
             downloadItem(url, label) {
                 Axios.get(url, {responseType: 'blob'})
                     .then(response => {
-                        const blob = new Blob([response.data], {type: 'application/pdf'})
+                        const blob = new Blob([response.data], {type: 'application/zip'})
                         const link = document.createElement('a')
                         link.href = URL.createObjectURL(blob)
                         link.download = label
