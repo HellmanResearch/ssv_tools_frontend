@@ -11,6 +11,7 @@
         <el-menu-item index="reward" route="reward">Reward</el-menu-item>
         <el-menu-item index="top" route="top">Rank</el-menu-item>
         <el-menu-item index="allocation">Allocation</el-menu-item>
+        <el-menu-item index="validator-key">Validator Key</el-menu-item>
     </el-menu>
 </template>
 
