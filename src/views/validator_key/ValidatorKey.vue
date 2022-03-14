@@ -13,13 +13,16 @@
                 <!--                <el-button @click="download" icon="el-icon-download" type="primary" :disabled="!Boolean(itemData.hex)||downloading">Download-->
                 <!--                </el-button>-->
             </div>
-            <div style="margin-top: 20px" column="1">
-                <el-descriptions title="" border>
+            <div style="margin-top: 20px">
+                <el-descriptions title="" border column="1">
                     <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" label="Hex Data:">
                         {{itemData.hex}}
                         <el-tooltip v-if="Boolean(itemData.hex)" effect="dark" :content="copyContent" placement="top">
                             <i @click="onCopyHex" :class="copyIcon"></i>
                         </el-tooltip>
+                    </el-descriptions-item>
+                    <el-descriptions-item style="" labelStyle="width: 100px" label="Keystore Password:">
+                        {{itemData.keystore_password}}
                     </el-descriptions-item>
                 </el-descriptions>
             </div>
