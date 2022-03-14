@@ -94,7 +94,7 @@ master_api.interceptors.response.use(response => {
     // 如果没有response 说明没有请求到后端
     if (!error.response) {
         if (axios.isCancel(error)) {
-            console.log("跳转取消")
+            console.log("is cancel: ", error)
             return Promise.reject(error)
         }
         if (error.message) {
@@ -113,7 +113,7 @@ master_api.interceptors.response.use(response => {
         }
         return;
     }else if (error.response.status >= 500){
-        Message.error("服务器出错啦 请联系管理员")
+        Message.error("Server backend error")
         return Promise.reject(error)
     }
     var data = error.response.data

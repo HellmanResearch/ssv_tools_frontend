@@ -15,7 +15,9 @@
             </div>
             <div style="margin-top: 20px" column="1">
                 <el-descriptions title="" border>
-                    <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" label="Hex Data:">{{itemData.hex}}<el-tooltip v-if="Boolean(itemData.hex)" effect="dark" :content="copyContent" placement="top">
+                    <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" label="Hex Data:">
+                        {{itemData.hex}}
+                        <el-tooltip v-if="Boolean(itemData.hex)" effect="dark" :content="copyContent" placement="top">
                             <i @click="onCopyHex" :class="copyIcon"></i>
                         </el-tooltip>
                     </el-descriptions-item>
@@ -26,6 +28,10 @@
 </template>
 
 <script>
+    import Axios from "axios"
+    import {Message} from 'element-ui';
+
+
     export default {
         data() {
             return {
@@ -53,8 +59,10 @@
             download() {
                 this.downloading = true
                 const url = `${this.$c_master.defaults.baseURL}ssv/deposit-key/download?dir_name=${this.itemData.dir_name}`
-                window.open(url);
+                // window.open(url);
                 this.downloading = false
+                const label = this.itemData.dir_name + ".zip";
+                this.downloadItem(url, label)
             },
             async onCopyHex() {
                 this.copyIcon = "el-icon-loading"
@@ -106,6 +114,20 @@
                 //     console.error('Async: Could not copy text: ', err);
                 //     return false;
                 // });
+            },
+            downloadItem(url, label) {
+                Axios.get(url, {responseType: 'blob'})
+                    .then(response => {
+                        const blob = new Blob([response.data], {type: 'application/pdf'})
+                        const link = document.createElement('a')
+                        link.href = URL.createObjectURL(blob)
+                        link.download = label
+                        link.click()
+                        URL.revokeObjectURL(link.href)
+                    }).catch((error) => {
+                    console.log("download error: ", error)
+                    Message.error("Download error")
+                })
             }
         }
     }
