@@ -54,10 +54,10 @@ const routes = [
             },
             {
                 path: "validator-key",
-                name: "validator_key",
+                name: "validator-key",
                 component: () => import('../views/validator_key/ValidatorKey.vue'),
                 meta: {
-                    name: "validator_key",
+                    name: "validator-key",
                     icon: "fa-th",
                     login: false,
                 }

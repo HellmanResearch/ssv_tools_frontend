@@ -8,15 +8,35 @@
                     show-icon
                     type="warning">
             </el-alert>
-            <div style="margin-top: 30px">
-                <el-button @click="newKey" type="primary" :disabled="inNew" :loading="inNew">New & Download</el-button>
+            <div style="margin-top: 30px; display: flex; justify-content: space-between; height: 60px">
                 <!--                <el-button @click="download" icon="el-icon-download" type="primary" :disabled="!Boolean(itemData.hex)||downloading">Download-->
                 <!--                </el-button>-->
+
+
+                <div>
+                    <el-button @click="newKey" type="primary" :disabled="inNew" :loading="inNew">New & Download
+                    </el-button>
+                </div>
+
+                <el-form @submit.native.prevent>
+                    <el-form-item label="" style="" :error="walletAddressError" v-if="Boolean(itemData.hex)">
+                        <el-input style="width: 400px" v-model="walletAddress"
+                                  @keyup.enter.native="onGenerateFullCommand"
+                                  placeholder="Input the ETH wallet address to generate the full command"></el-input>
+
+                        <el-tooltip style="margin-left: 10px" effect="dark"
+                                    content="Click to generate the full command" placement="top">
+                            <el-button @click="onGenerateFullCommand" type="primary">
+                                Generate
+                            </el-button>
+                        </el-tooltip>
+                    </el-form-item>
+                </el-form>
             </div>
             <div style="margin-top: 20px">
-                <el-descriptions title="" border column="1">
-                    <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" label="Hex Data:">
-                        {{itemData.hex}}
+                <el-descriptions title="" border :column="1">
+                    <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" :label="hexDataLabel">
+                        {{hexDataContent}}
                         <el-tooltip v-if="Boolean(itemData.hex)" effect="dark" :content="copyContent" placement="top">
                             <i @click="onCopyHex" :class="copyIcon"></i>
                         </el-tooltip>
@@ -34,6 +54,8 @@
     import Axios from "axios"
     import {Message} from 'element-ui';
 
+    import WAValidator from 'wallet-address-validator';
+
 
     export default {
         data() {
@@ -42,18 +64,24 @@
                 downloading: false,
                 inNew: false,
                 copyContent: "Click to copy",
-                copyIcon: "el-icon-document-copy"
+                copyIcon: "el-icon-document-copy",
+                walletAddress: "",
+                walletAddressError: "",
+                hexDataLabel: "Hex Data",
+                hexDataContent: ""
             }
         },
         mounted() {
         },
         methods: {
             newKey() {
+                this.resetHexData()
                 this.inNew = true
                 this.itemData = {}
                 this.$c_master.post("ssv/deposit-key/new").then(response => {
                     this.inNew = false
                     this.itemData = response.data
+                    this.hexDataContent = this.itemData.hex
                     this.download()
                 }).catch(error => {
                     this.inNew = false
@@ -70,7 +98,7 @@
             },
             async onCopyHex() {
                 this.copyIcon = "el-icon-loading"
-                const result = await this.copyTextToClipboard(this.itemData.hex);
+                const result = await this.copyTextToClipboard(this.hexDataContent);
                 if (result == true) {
                     this.copyContent = "Copied"
                 } else {
@@ -132,6 +160,24 @@
                     console.log("download error: ", error)
                     Message.error("Download error")
                 })
+            },
+            onGenerateFullCommand() {
+                this.walletAddressError = ""
+                var valid = WAValidator.validate(this.walletAddress, "ETH");
+                if (!valid) {
+                    this.walletAddressError = "Invalid wallet address"
+                    return
+                }
+                const fullCommand = `+goerlieth ${this.walletAddress} ${this.itemData.hex}`
+                this.hexDataToFullCommand(fullCommand)
+            },
+            hexDataToFullCommand(fullCommand) {
+                this.hexDataLabel = "Full Command:"
+                this.hexDataContent = fullCommand
+            },
+            resetHexData() {
+                this.hexDataLabel = "Hex Data:"
+                this.hexDataContent = ""
             }
         }
     }
