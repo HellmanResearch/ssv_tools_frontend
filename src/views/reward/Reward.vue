@@ -8,7 +8,8 @@
                           v-model="params.owner_address"
                           style="width: 100%; text-align: center">
                     <el-button id="submit" @click="on_search()" slot="append" icon="el-icon-search"
-                               :loading="loading" style="width: 140px; background-color: #16B8D8; color: #FFFFFF"></el-button>
+                               :loading="loading"
+                               style="width: 140px; background-color: #16B8D8; color: #FFFFFF"></el-button>
                 </el-input>
             </div>
             <div style="margin-top: 50px">
@@ -60,10 +61,18 @@
                             :show-overflow-tooltip="true"
                     >
                     </el-table-column>
+                    <el-table-column
+                            label=""
+                            prop="abusers_distribution"
+                            :show-overflow-tooltip="true"
+                    >
+                    </el-table-column>
                 </el-table>
             </div>
             <div style="text-align: center; margin-top: 60px; color: #606266; font-size: 12px">
-                Data from <a href="https://docs.google.com/spreadsheets/d/1Bam1JwcJR4g8xDinsAPxF28AN6pvwUyR7sFwznoLwow/edit#gid=1120824648" target="_blank">ssv.network</a>
+                Data from <a
+                    href="https://docs.google.com/spreadsheets/d/1wcDBsZSkIKgMNfnJUNwbZNMa2Sxh-k-p4EbJ6iIoHA8/edit#gid=1120824648"
+                    target="_blank">ssv.network</a>
             </div>
         </div>
     </div>
@@ -93,7 +102,7 @@
                 }, {
                     "title": "Manged Validators",
                 }, {
-                    "title": "Allocation Rewards", "key": "_1"
+                    "title": "Allocation Rewards", "key": "_1", "round1": "Abusers Distribution"
                 }, {
                     "title": "All validators alloc",
                 }, {
@@ -130,9 +139,14 @@
                     if (columnIndex == 1) {
                         return [1, 5]
                     }
+                } else if (columnIndex == 6) {
+                    if (rowIndex == 0) {
+                        return [5, 1]
+                    } else if (rowIndex == 6) {
+                        return [4, 1]
+                    }
                 }
-            }
-            ,
+            },
             after_get_data_error(error) {
                 this.data = this.default_data
             }
