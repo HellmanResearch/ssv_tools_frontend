@@ -17,6 +17,11 @@
                 console.log(row);
             }
         },
+        mounted() {
+            this.$c_master.get("https://testnet.c3-protocol.art/config/airdrop.json").then(response => {
+                console.log("response: ", response);
+            })
+        },
 
         data() {
 
