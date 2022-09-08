@@ -45,7 +45,7 @@
                 </li>
                 <li
                         class="c_li"
-                        @click="window.open('https://explorer.ssv.network/operators/e4edcb950ee9f4a4f89dde5e9b74b615c04f21f204884bc53ffe2bebbcea4b93')"
+                        @click="window.open('https://explorer.ssv.network/operators/127')"
                 >
                     <i
                             class="fa fa-external-link"
