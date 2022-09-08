@@ -1,6 +1,52 @@
 <template>
     <div style="display: flex; justify-content: center">
-      <h1>Updating</h1>
+        <div style="width: 70%">
+            <el-alert
+                    title="The key generated here is only for easier participation in the SSV testnet, please do not abuse the network. We do not ask for any keys and your wallet is safe."
+                    :closable="false"
+                    center
+                    show-icon
+                    type="warning">
+            </el-alert>
+            <div style="margin-top: 30px; display: flex; justify-content: space-between; height: 60px">
+                <!--                <el-button @click="download" icon="el-icon-download" type="primary" :disabled="!Boolean(itemData.hex)||downloading">Download-->
+                <!--                </el-button>-->
+
+
+                <div>
+                    <el-button @click="newKey" type="primary" :disabled="inNew" :loading="inNew">New & Download
+                    </el-button>
+                </div>
+
+                <el-form @submit.native.prevent>
+                    <el-form-item label="" style="" :error="walletAddressError" v-if="Boolean(itemData.hex)">
+                        <el-input style="width: 400px" v-model="walletAddress"
+                                  @keyup.enter.native="onGenerateFullCommand"
+                                  placeholder="Input the ETH wallet address to generate the full command"></el-input>
+
+                        <el-tooltip style="margin-left: 10px" effect="dark"
+                                    content="Click to generate the full command" placement="top">
+                            <el-button @click="onGenerateFullCommand" type="primary">
+                                Generate
+                            </el-button>
+                        </el-tooltip>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <div style="margin-top: 20px">
+                <el-descriptions title="" border :column="1">
+                    <el-descriptions-item style="" labelStyle="width: 100px; height: 300px" :label="hexDataLabel">
+                        {{hexDataContent}}
+                        <el-tooltip v-if="Boolean(itemData.hex)" effect="dark" :content="copyContent" placement="top">
+                            <i @click="onCopyHex" :class="copyIcon"></i>
+                        </el-tooltip>
+                    </el-descriptions-item>
+                    <el-descriptions-item style="" labelStyle="width: 100px" label="Keystore Password:">
+                        {{itemData.keystore_password}}
+                    </el-descriptions-item>
+                </el-descriptions>
+            </div>
+        </div>
     </div>
 </template>
 
